@@ -59,11 +59,25 @@
       ></video>
     </a-scene>
 
-    <script>
-      const video = document.querySelector("#video1");
-      document.addEventListener("click", () => {
-        if (video.paused) video.play();
-      });
-    </script>
+<script>
+  const video = document.querySelector("#video1");
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const target = document.querySelector("[mindar-image-target]");
+
+    target.addEventListener("targetFound", () => {
+      video.play();
+    });
+
+    target.addEventListener("targetLost", () => {
+      video.pause();
+    });
+  });
+
+  document.addEventListener("click", () => {
+    if (video.paused) video.play();
+  });
+</script>
+
   </body>
 </html>
